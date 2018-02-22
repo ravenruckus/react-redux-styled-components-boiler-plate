@@ -1,0 +1,71 @@
+{
+  "name": "Boiler-Plate",
+  "version": "1.0.0",
+  "license": "MIT",
+  "browserslist": [
+    "> 1%"
+  ],
+  "scripts": {
+    "start": "yarn dev:start",
+    "dev:start": "nodemon -e js,jsx --ignore lib --ignore dist --exec babel-node src/server",
+    "dev:wds": "webpack-dev-server --progress",
+    "prod:build": "rimraf lib dist && babel src -d lib && cross-env NODE_ENV=production webpack -p --progress",
+    "prod:start": "heroku local",
+    "lint": "eslint src webpack.config.babel.js --ext .js, .jsx",
+    "test": "yarn lint && flow",
+    "precommit": "yarn test",
+    "prepush": "yarn test && yarn prod:build ",
+    "heroku-postbuild": "yarn prod:build"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "babel-polyfill": "^6.26.0",
+    "compression": "^1.6.2",
+    "cross-env": "^5.1.3",
+    "dotenv": "^5.0.0",
+    "express": "^4.16.2",
+    "immutable": "4.0.0-rc.9",
+    "react": "^15.5.4",
+    "react-bootstrap": "^0.32.1",
+    "react-dom": "^15.5.4",
+    "react-helmet": "^5.2.0",
+    "react-hot-loader": "3.1.3",
+    "react-redux": "^5.0.7",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "redux": "^3.7.2",
+    "redux-actions": "^2.2.1",
+    "redux-thunk": "^2.2.0",
+    "styled-components": "^3.1.6",
+    "styled-reset": "^1.0.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.1",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-flow-react-proptypes": "^18.0.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-flow": "^6.23.0",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^4.18.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-compat": "^2.2.0",
+    "eslint-plugin-flowtype": "^2.45.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.6.1",
+    "flow-bin": "^0.66.0",
+    "husky": "^0.14.3",
+    "nodemon": "^1.15.0",
+    "rimraf": "^2.6.2",
+    "webpack": "^3.11.0",
+    "webpack-dev-server": "^2.11.1"
+  },
+  "engines": {
+    "node": "9.5.0",
+    "yarn": "1.3.2",
+    "npm": "5.6.0"
+  }
+}
